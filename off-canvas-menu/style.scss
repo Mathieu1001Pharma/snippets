@@ -30,7 +30,7 @@ header {
     background-color: $tertiary-color;
 }
 
-/* //Presentation purpose */
+/* End presentation purpose */
 
 
 .nav-container {
@@ -58,10 +58,12 @@ header {
             height: 100%;
             list-style: none;
             padding-left: 0;
+
             &.animate {
                 transform: translate3d(0, 100%, 0);
 
                 > li {
+                    /* add delay on transform for each iteration of li */
                     @for $i from 1 through 4 {
                         &:nth-child(#{$i}) {
                             transform: translate3d(0, #{1000 + $i * 800px}, 0);
@@ -95,7 +97,7 @@ header {
         }
     }
 
-    /* Close cross */
+    /* Close crossed button */
     .close-button {
         width: 1rem;
         height: 1rem;
@@ -158,8 +160,8 @@ header {
 
 /* When menu displayed */
 body[data-menu='visible'] {
-    /* Show nav and links with different delay for styling purpose */
-    .menu-nav {
+    /* Show nav-container and links with different transition duration for styling purpose */
+    .nav-container {
         transform: $transform-active;
         transition: $transition-transform;
         transition-timing-function: $transition-timing;
@@ -189,16 +191,15 @@ body[data-menu='visible'] {
     /* Trigger opacity background */
     .content::before {
         opacity: 1;
+        transform: $transform-active;
         transition: opacity .8s;
         transition-timing-function: $transition-timing;
-        transform: $transform-active;
     }
 }
 
 
-/* Used to wrap the rest of the site into a dark opacity brackground */
-.content {
-    &::before {
+/* Used to wrap the rest of the site into a dark opacified brackground */
+.content::before {
         content: '';
         position: fixed;
         top: 0;
@@ -211,5 +212,4 @@ body[data-menu='visible'] {
         transform: $transform-initial;
         transition: opacity .4s, transform 0s .4s;
         transition-timing-function: $transition-timing;
-    }
 }

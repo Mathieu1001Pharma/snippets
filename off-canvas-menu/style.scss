@@ -164,7 +164,6 @@ main {
 
 
 /* When menu displayed */
-
 body[data-menu='visible'] {
     /* Show nav and links with different delay for styling purpose */
     .menu-nav {
@@ -183,13 +182,6 @@ body[data-menu='visible'] {
             }
 
             > ul {
-
-                &[data-has-opened-menu='true'] {
-                    [data-childmenu='visible'] > a {
-                        color: $gray-darken-color;
-                    }
-                }
-
                 &.animate {
                     > li {
                         transform: $transform-active;
@@ -226,26 +218,5 @@ body[data-menu='visible'] {
         transform: $transform-initial;
         transition: opacity .4s, transform 0s .4s;
         transition-timing-function: $transition-timing;
-    }
-}
-
-
-/* Right navigation */
-.nav-right {
-    right: 0;
-    transform: translate3d(320px, 0, 0);
-
-    [data-cart='visible'] & {
-        transform: translate3d(0, 0, 0);
-    }
-}
-
-[data-cart='visible'] {
-    /* Trigger opacity background */
-    .content::before {
-        opacity: 1;
-        transition: opacity .4s;
-        transition-timing-function: $transition-timing;
-        transform: $transform-active;
     }
 }
